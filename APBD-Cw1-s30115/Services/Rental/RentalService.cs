@@ -17,6 +17,7 @@ public class RentalService : IRentalService
         }
 
         Models.Rental rental = new Models.Rental(user, equipment, from, to);
+        equipment.Status = EquipmentStatus.Rented;
         _rentals.Add(rental);
         
     }

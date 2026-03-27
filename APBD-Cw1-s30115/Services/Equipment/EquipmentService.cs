@@ -47,7 +47,7 @@ public class EquipmentService : IEquipmentService
         
         if (equipmentToDelete == null)
         {
-            throw new IdNotFoundException(equipmentId);
+            throw new EquipmentNotFoundException(equipmentId);
         }
         _equipments.Remove(equipmentToDelete);
     }
@@ -57,7 +57,7 @@ public class EquipmentService : IEquipmentService
         var equipment = _equipments.FirstOrDefault(equipment => equipment.ID == equipmentId);
         if (equipment == null)
         {
-            throw new IdNotFoundException(equipmentId);
+            throw new EquipmentNotFoundException(equipmentId);
         }
 
         equipment.Status = EquipmentStatus.Rented;
@@ -69,7 +69,7 @@ public class EquipmentService : IEquipmentService
         var equipment = _equipments.FirstOrDefault(equipment => equipment.ID == equipmentId);
         if (equipment == null)
         {
-            throw new IdNotFoundException(equipmentId);
+            throw new EquipmentNotFoundException(equipmentId);
         }
 
         equipment.Status = EquipmentStatus.Available;
