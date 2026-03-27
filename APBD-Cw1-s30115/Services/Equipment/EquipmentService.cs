@@ -1,10 +1,12 @@
+using APBD_Cw1_s30115.Enums;
+using APBD_Cw1_s30115.Exceptions;
 using APBD_Cw1_s30115.Services.Equipment;
 
 namespace APBD_Cw1_s30115.Services;
 
 public class EquipmentService : IEquipmentService
 {
-    private List<Models.Equipment> _equipments = []
+    private readonly List<Models.Equipment> _equipments = [];
     
     public void AddEquipment(Models.Equipment equipment)
     {
@@ -13,26 +15,63 @@ public class EquipmentService : IEquipmentService
 
     public List<Models.Equipment> GetAll()
     {
-        throw new NotImplementedException();
+        return _equipments;
     }
 
     public List<Models.Equipment> GetAvailable()
     {
-        throw new NotImplementedException();
+        List<Models.Equipment> Availables = new List<Models.Equipment>();
+        foreach (var equipment in _equipments)
+        {
+            if (equipment.Status == EquipmentStatus.Available)
+            {
+                Availables.Add(equipment);
+            }
+        }
+
+        return Availables;
+
     }
 
-    public Models.Equipment DeleteEquipment(int equipmentId)
+    public void DeleteEquipment(int equipmentId)
     {
-        if 
+        Models.Equipment equipmentToDelete = null;
+        foreach (var eq in _equipments)
+        {
+            if (eq.ID == equipmentId)
+            {
+                equipmentToDelete = eq;
+                break; 
+            }
+        }
+        
+        if (equipmentToDelete == null)
+        {
+            throw new IdNotFoundException(equipmentId);
+        }
+        _equipments.Remove(equipmentToDelete);
     }
 
     public void SetStatusRented(int equipmentId)
     {
-        throw new NotImplementedException();
+        var equipment = _equipments.FirstOrDefault(equipment => equipment.ID == equipmentId);
+        if (equipment == null)
+        {
+            throw new IdNotFoundException(equipmentId);
+        }
+
+        equipment.Status = EquipmentStatus.Rented;
+
     }
 
     public void SetStatusAvailable(int equipmentId)
     {
-        throw new NotImplementedException();
+        var equipment = _equipments.FirstOrDefault(equipment => equipment.ID == equipmentId);
+        if (equipment == null)
+        {
+            throw new IdNotFoundException(equipmentId);
+        }
+
+        equipment.Status = EquipmentStatus.Available;
     }
 }

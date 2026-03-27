@@ -6,7 +6,7 @@ public interface IEquipmentService
 {
 
     public void AddEquipment(Models.Equipment equipment);
-    public Models.Equipment DeleteEquipment(int equipmentId);
+    public void DeleteEquipment(int equipmentId);
     public List<Models.Equipment> GetAll();
     public List<Models.Equipment> GetAvailable();
     public void SetStatusAvailable(int equipmentId);

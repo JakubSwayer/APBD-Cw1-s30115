@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ddaf8b64-8c95-4379-908c-6da86c80c0a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.APBD-Cw1-s30115/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.APBD-Cw1-s30115/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.APBD-Cw1-s30115/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.APBD-Cw1-s30115/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/f.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Models/Rental.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Equipment/EquipmentService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Equipment/IEquipmentService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Rental/IRentalService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Rental/RentalService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APBD-Cw1-s30115/APBD-Cw1-s30115.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/APBD-Cw1-s30115.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/EquipmentNotAvailableException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/RentalNotFoundException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/UserHasNoRentalsException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/f.cs" beforeDir="false" afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/IDNotFoundException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APBD-Cw1-s30115/Models/Rental.cs" beforeDir="false" afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Models/Rental.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Equipment/EquipmentService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Equipment/EquipmentService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Equipment/IEquipmentService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Equipment/IEquipmentService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Rental/RentalService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Rental/RentalService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,21 +22,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "JakubSwayer"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;JakubSwayer&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/JakubSwayer/APBD-Cw1-s30115.git",
-    "accountId": "b67b7baf-e4a8-4bf8-b69d-d92dd2803bc8"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/JakubSwayer/APBD-Cw1-s30115.git&quot;,
+    &quot;accountId&quot;: &quot;b67b7baf-e4a8-4bf8-b69d-d92dd2803bc8&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Enums/EquipmentStatus.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/f.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/EquipmentNotAvailableException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/IDNotFoundException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/RentalNotFoundException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/UserHasNoRentalsException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Models/Camera.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Models/Employee.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Models/Equipment.cs" root0="FORCE_HIGHLIGHTING" />
@@ -53,9 +53,9 @@
     <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Services/Rental/RentalService.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="3BJHGRQE16gF37wOqhH4mROMwwU" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -64,16 +64,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "master",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="APBD-Cw1-s30115" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -105,6 +105,7 @@
       <option name="presentableId" value="Default" />
       <updated>1774200157342</updated>
       <workItem from="1774200158376" duration="13014000" />
+      <workItem from="1774648118536" duration="5226000" />
     </task>
     <task id="LOCAL-00001" summary="File structure + models">
       <option name="closed" value="true" />
