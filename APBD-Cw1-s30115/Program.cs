@@ -1,12 +1,9 @@
-﻿using System;
-using System.Linq;
-using APBD_Cw1_s30115.Models;
+﻿using APBD_Cw1_s30115.Models;
 using APBD_Cw1_s30115.Services;
 using APBD_Cw1_s30115.Services.Equipment;
 using APBD_Cw1_s30115.Services.Rental;
 using APBD_Cw1_s30115.Services.User;
 using APBD_Cw1_s30115.Enums;
-using APBD_Cw1_s30115.Exceptions;
 
 Console.WriteLine("=== UNIVERSITY EQUIPMENT RENTAL SYSTEM ===\n");
 
