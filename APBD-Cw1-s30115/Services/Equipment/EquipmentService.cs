@@ -74,4 +74,15 @@ public class EquipmentService : IEquipmentService
 
         equipment.Status = EquipmentStatus.Available;
     }
+
+    public void SetStatusMaintenance(int equipmentId)
+    {
+        var equipment = _equipments.FirstOrDefault(equipment => equipment.ID == equipmentId);
+        if (equipment == null)
+        {
+            throw new EquipmentNotFoundException(equipmentId);
+        }
+
+        equipment.Status = EquipmentStatus.Maintenance;
+    }
 }

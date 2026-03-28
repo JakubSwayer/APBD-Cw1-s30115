@@ -5,14 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ddaf8b64-8c95-4379-908c-6da86c80c0a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/EquipmentNotFoundException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/EquipmentNotAvailableException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/EquipmentNotAvailableException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/IDNotFoundException.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/RentalNotFoundException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/RentalNotFoundException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/UserHasNoRentalsException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/UserHasNoRentalsException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Enums/RentalStatus.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/LimitExceededException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/User/IUserService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/User/UserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.APBD-Cw1-s30115/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.APBD-Cw1-s30115/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APBD-Cw1-s30115/Enums/EquipmentStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Enums/EquipmentStatus.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/APBD-Cw1-s30115/Models/Rental.cs" beforeDir="false" afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Models/Rental.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/APBD-Cw1-s30115/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Equipment/EquipmentService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Equipment/EquipmentService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Equipment/IEquipmentService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Equipment/IEquipmentService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Rental/IRentalService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Rental/IRentalService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Rental/RentalService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/APBD-Cw1-s30115/Services/Rental/RentalService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,8 +43,9 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Enums/EquipmentStatus.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Enums/RentalStatus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/EquipmentNotAvailableException.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/IDNotFoundException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/LimitExceededException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/RentalNotFoundException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Exceptions/UserHasNoRentalsException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/APBD-Cw1-s30115/Models/Camera.cs" root0="FORCE_HIGHLIGHTING" />
@@ -68,17 +72,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.APBD-Cw1-s30115.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "master",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.APBD-Cw1-s30115.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="APBD-Cw1-s30115" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -111,6 +115,7 @@
       <updated>1774200157342</updated>
       <workItem from="1774200158376" duration="13014000" />
       <workItem from="1774648118536" duration="6316000" />
+      <workItem from="1774723717853" duration="7152000" />
     </task>
     <task id="LOCAL-00001" summary="File structure + models">
       <option name="closed" value="true" />

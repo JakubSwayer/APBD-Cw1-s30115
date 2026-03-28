@@ -11,4 +11,5 @@ public interface IEquipmentService
     public List<Models.Equipment> GetAvailable();
     public void SetStatusAvailable(int equipmentId);
     public void SetStatusRented(int equipmentId);
+    public void SetStatusMaintenance(int equipmentId);
 }

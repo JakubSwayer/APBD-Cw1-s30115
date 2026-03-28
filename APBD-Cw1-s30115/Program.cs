@@ -1,75 +1,108 @@
-﻿using APBD_Cw1_s30115.Models;
+﻿using System;
+using System.Linq;
+using APBD_Cw1_s30115.Models;
 using APBD_Cw1_s30115.Services;
+using APBD_Cw1_s30115.Services.Equipment;
 using APBD_Cw1_s30115.Services.Rental;
+using APBD_Cw1_s30115.Services.User;
+using APBD_Cw1_s30115.Enums;
 using APBD_Cw1_s30115.Exceptions;
 
-Console.WriteLine("=== START SYSTEMU WYPOŻYCZALNI ===\n");
+Console.WriteLine("=== UNIVERSITY EQUIPMENT RENTAL SYSTEM ===\n");
 
-// 1. Inicjalizacja serwisów
-var equipmentService = new EquipmentService();
-var rentalService = new RentalService();
+IEquipmentService equipmentService = new EquipmentService();
+IRentalService rentalService = new RentalService();
+IUserService userService = new UserService();
 
-// 2. Tworzenie testowych użytkowników
-var student = new Student("Kuba", "Staniszewski");
-var wykladowca = new Employee("Jan", "Kowalski");
+var student = new Student("Jan", "Kowalski");
+var employee = new Employee("Adam", "Wisniewski");
 
-// 3. Tworzenie testowego sprzętu
-var camera = new Camera("A7 III", "Alpha", "Sony", true, "24.2 MP");
+userService.AddUser(student);
+userService.AddUser(employee);
+
 var laptop = new Laptop("ThinkPad", "T14", "Lenovo", "Windows 11", "1920x1080");
+var camera = new Camera("A7 III", "Alpha", "Sony", true, "24.2 MP");
 var projector = new Projector("Epson Pro", "X300", "Epson", "4K", 3000);
+var brokenProjector = new Projector("Epson Basic", "X100", "Epson", "1080p", 2000);
 
-// 4. Dodajemy sprzęt do bazy
-equipmentService.AddEquipment(camera);
 equipmentService.AddEquipment(laptop);
+equipmentService.AddEquipment(camera);
 equipmentService.AddEquipment(projector);
+equipmentService.AddEquipment(brokenProjector);
 
-Console.WriteLine("--- DOSTĘPNY SPRZĘT (Przed wypożyczeniem) ---");
-foreach (var eq in equipmentService.GetAvailable())
+equipmentService.SetStatusMaintenance(brokenProjector.ID);
+
+try 
 {
-    Console.WriteLine($"ID: {eq.ID} | {eq.Manufacturer} {eq.Name} | Status: {eq.Status}");
+    Console.WriteLine("[Valid Rental]: Student borrows a laptop.");
+    rentalService.CreateRental(student, laptop, DateTime.Now, DateTime.Now.AddDays(3));
+    Console.WriteLine("Success.\n");
+} 
+catch (Exception e) 
+{ 
+    Console.WriteLine(e.Message + "\n"); 
 }
 
-// 5. Robimy pierwsze wypożyczenie!
-Console.WriteLine("\n--- WYPOŻYCZANIE ---");
-Console.WriteLine($"Student {student.firstName} wypożycza aparat {camera.Name}...");
-rentalService.CreateRental(student, camera, DateTime.Now, DateTime.Now.AddDays(3));
-
-Console.WriteLine("\n--- DOSTĘPNY SPRZĘT (Po wypożyczeniu) ---");
-foreach (var eq in equipmentService.GetAvailable())
+try 
 {
-    // Zauważ, że aparat Sony zniknie z tej listy, bo ma status Rented!
-    Console.WriteLine($"ID: {eq.ID} | {eq.Manufacturer} {eq.Name} | Status: {eq.Status}");
+    Console.WriteLine("[Invalid Rental]: Attempt to borrow a projector in maintenance.");
+    rentalService.CreateRental(student, brokenProjector, DateTime.Now, DateTime.Now.AddDays(1));
+} 
+catch (Exception e) 
+{ 
+    Console.WriteLine(e.Message + "\n"); 
 }
 
-// 6. Testujemy Twój piękny wyjątek! (Próba wypożyczenia zajętego sprzętu)
-Console.WriteLine("\n--- TESTOWANIE WYJĄTKÓW (Zabezpieczeń) ---");
-try
+try 
 {
-    Console.WriteLine($"Wykładowca {wykladowca.firstName} próbuje wypożyczyć zajęty aparat {camera.Name}...");
-    // To powinno wywalić błąd, bo aparat jest już u studenta!
-    rentalService.CreateRental(wykladowca, camera, DateTime.Now, DateTime.Now.AddDays(1));
-}
-catch (EquipmentNotAvailableException ex)
-{
-    // Złapaliśmy Twój wyjątek! Program się nie crashuje, tylko ładnie wypisuje Twój błąd na czerwono
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine($"ZŁAPANO BŁĄD: {ex.Message}");
-    Console.ResetColor();
+    Console.WriteLine("[Limit Check]: Student attempts to exceed the rental limit.");
+    rentalService.CreateRental(student, camera, DateTime.Now, DateTime.Now.AddDays(2)); 
+    rentalService.CreateRental(student, projector, DateTime.Now, DateTime.Now.AddDays(2)); 
+} 
+catch (Exception e) 
+{ 
+    Console.WriteLine(e.Message + "\n"); 
 }
 
-// 7. Oddajemy sprzęt
-Console.WriteLine("\n--- ZWRACANIE SPRZĘTU ---");
-var kubaRentals = rentalService.GetUserReservations(student);
-var wypozyczenieDoZwrotu = kubaRentals[0]; // Bierzemy pierwsze wypożyczenie z brzegu
-
-Console.WriteLine($"Student {student.firstName} oddaje sprzęt (Wypożyczenie ID: {wypozyczenieDoZwrotu.Id})...");
-rentalService.EndRental(wypozyczenieDoZwrotu.Id);
-
-Console.WriteLine("\n--- DOSTĘPNY SPRZĘT (Po zwrocie) ---");
-foreach (var eq in equipmentService.GetAvailable())
+try 
 {
-    // Aparat Sony znowu wraca na listę!
-    Console.WriteLine($"ID: {eq.ID} | {eq.Manufacturer} {eq.Name} | Status: {eq.Status}");
+    Console.WriteLine("[On-Time Return]: Student returns the camera on time.");
+    var studentRentals = rentalService.GetUserReservations(student);
+    var cameraRental = studentRentals.FirstOrDefault(r => r.Equipment.ID == camera.ID);
+    if (cameraRental != null) 
+    {
+        rentalService.FinishRental(cameraRental.Id, DateTime.Now);
+        Console.WriteLine("Success.\n");
+    }
+} 
+catch (Exception e) 
+{ 
+    Console.WriteLine(e.Message + "\n"); 
 }
 
-Console.WriteLine("\n=== KONIEC ===");
+try 
+{
+    Console.WriteLine("[Delayed Return]: Student returns the laptop with a delay.");
+    var studentRentals = rentalService.GetUserReservations(student);
+    var laptopRental = studentRentals.FirstOrDefault(r => r.Equipment.ID == laptop.ID);
+    if (laptopRental != null) 
+    {
+        rentalService.FinishRental(laptopRental.Id, laptopRental.To.AddDays(5));
+    }
+} 
+catch (Exception e) 
+{ 
+    Console.WriteLine(e.Message + "\n"); 
+}
+
+Console.WriteLine("\n=== FINAL SYSTEM REPORT ===");
+var allEquipment = equipmentService.GetAll();
+var availableEquipment = equipmentService.GetAvailable();
+var overdueRentals = rentalService.GetOverdueRentals(DateTime.Now);
+
+Console.WriteLine($"- Total Users: {userService.GetAll().Count}");
+Console.WriteLine($"- Total Equipment: {allEquipment.Count}");
+Console.WriteLine($"- Available Equipment: {availableEquipment.Count}");
+Console.WriteLine($"- Equipment in Maintenance: {allEquipment.Count(e => e.Status == EquipmentStatus.Maintenance)}");
+Console.WriteLine($"- Overdue Rentals: {overdueRentals.Count}");
+Console.WriteLine("===========================\n");
